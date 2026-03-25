@@ -1,0 +1,27 @@
+name: OpenClo Robot Empire Daily Job
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # 매일 한국 시간 오전 9시에 자동 가동! ⏰
+  workflow_dispatch: # 수동으로 가동하고 싶을 때 버튼 생성!
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/workflows/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install Dependencies
+        run: |
+          pip install requests beautifulsoup4 lxml
+
+      - name: Run OpenClo Bot
+        env:
+          VITE_MASTER_KEY: ${{ secrets.VITE_MASTER_KEY }}
+        run: python OpenClo_Gold_Digger.py
