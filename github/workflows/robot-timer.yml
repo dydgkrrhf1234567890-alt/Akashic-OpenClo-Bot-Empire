@@ -1,0 +1,18 @@
+name: OpenClo Daily Mine
+on:
+  schedule:
+    - cron: '0 0 * * *' # 매일 아침 9시 자동 실행
+  workflow_dispatch: # 우리가 직접 버튼 눌러서 실행 가능!
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - name: Install Libs
+        run: pip install requests
+      - name: Start Mining
+        run: python OpenClo_Gold_Digger.py
