@@ -4,43 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADVC M♥R Akashic OpenClo Empire</title>
-    <script src="https://cdn.ethers.io/lib/ethers-5.7.2.umd.min.js" type="application/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"></script>
     <style>
         body { background-color: #0c0c1a; color: #f5f5f7; font-family: 'Segoe UI', sans-serif; text-align: center; margin: 0; padding: 20px; }
-        .container { max-width: 800px; margin: auto; border: 1px solid #333; padding: 40px; border-radius: 20px; box-shadow: 0 0 50px rgba(86, 255, 154, 0.1); }
-        h1 { color: #aadfaa; text-shadow: 0 0 15px #56ff9a; font-size: 2.2rem; }
-        .robot-status { background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 15px; margin: 20px 0; border-left: 5px solid #77bfa3; }
-        .mrc-value { font-size: 2.8rem; color: #ffcc00; font-weight: bold; margin: 10px 0; }
-        button { padding: 15px 30px; font-size: 1.1rem; cursor: pointer; border-radius: 50px; border: none; transition: 0.3s; font-weight: bold; width: 100%; max-width: 300px; }
-        .btn-connect { background: #556f9e; color: white; margin-bottom: 20px; }
-        .btn-claim { background: #77bfa3; color: #05130b; box-shadow: 0 0 20px #77bfa3; }
-        #txLog { margin-top: 30px; font-family: monospace; color: #aaffaa; font-size: 0.9rem; word-break: break-all; }
-        .live-dot { display: inline-block; width: 80px; height: 80px; border-radius: 50%; background: radial-gradient(circle, #56ff9a, transparent); animation: pulse 1s infinite alternate; }
-        @keyframes pulse { 0% { opacity: 0.5; } 100% { opacity: 1; } }
+        .container { max-width: 800px; margin: auto; border: 1px solid #333; padding: 30px; border-radius: 20px; box-shadow: 0 0 50px rgba(86, 255, 154, 0.1); }
+        h1 { color: #aadfaa; text-shadow: 0 0 15px #56ff9a; font-size: 2rem; }
+        .robot-status { background: rgba(255, 255, 255, 0.05); padding: 15px; border-radius: 15px; margin: 15px 0; border-left: 5px solid #77bfa3; }
+        .mrc-value { font-size: 2.5rem; color: #ffcc00; font-weight: bold; }
+        button { padding: 18px; font-size: 1.2rem; cursor: pointer; border-radius: 50px; border: none; font-weight: bold; width: 100%; margin-top: 10px; }
+        .btn-connect { background: #556f9e; color: white; }
+        .btn-claim { background: #56ff9a; color: #05130b; box-shadow: 0 0 15px #56ff9a; display: none; }
+        #txLog { margin-top: 20px; color: #aaffaa; font-size: 0.8rem; word-break: break-all; }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>💎 AKASHIC OPENCLO EMPIRE 💎</h1>
-        <p>M♥R Imperial Foundation | OpenClo Robot Working...</p>
-        
-        <div class="live-dot"></div>
-        
         <div class="robot-status">
-            <h3>🤖 오픈클로 로봇 가동 상태: <span style="color:#56ff9a">OPTIMIZED</span></h3>
-            <p>로봇이 인터넷에서 디지털 황금을 수확 중입니다...</p>
+            <p>🤖 오픈클로 로봇 수익 채굴 중...</p>
             <div class="mrc-value" id="mrcDisplay">144.8100</div>
-            <p style="color:#888">$ <span id="usdDisplay">144.81</span> USD</p>
         </div>
 
-        <div id="walletSection">
-            <button class="btn-connect" onclick="connectWallet()">메타마스크 지갑 연결</button>
-        </div>
-
-        <div id="actionSection" style="display:none">
-            <p>📜 연결된 지갑: <span id="userAddress" style="color:#aadfaa"></span></p>
-            <button class="btn-claim" id="claimBtn" onclick="claimReward()">실물 자산 현신 (Claim 0.01 POL)</button>
-        </div>
+        <button id="connectBtn" class="btn-connect" onclick="connectWallet()">🦊 지갑 연결하여 입장</button>
+        <button id="claimBtn" class="btn-claim" onclick="claimReward()">💰 실물 자산 현신 (0.01 POL)</button>
 
         <div id="txLog"></div>
     </div>
@@ -49,64 +35,61 @@
         let userAccount = "";
         let mrc = 144.81;
 
-        // 수익 카운팅 애니메이션
+        // 수익 애니메이션
         setInterval(() => {
             mrc += 0.0001;
             document.getElementById('mrcDisplay').innerText = mrc.toFixed(4);
-            document.getElementById('usdDisplay').innerText = mrc.toFixed(2);
         }, 1000);
 
-        // 1. 지갑 연결 함수
+        // 1. 지갑 연결 (강력한 연결 로직)
         async function connectWallet() {
-            if (typeof window.ethereum !== 'undefined') {
+            if (window.ethereum) {
                 try {
-                    const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
                     userAccount = accounts[0];
-                    document.getElementById('userAddress').innerText = userAccount.substring(0,10) + '...';
-                    document.getElementById('walletSection').style.display = 'none';
-                    document.getElementById('actionSection').style.display = 'block';
+                    document.getElementById('connectBtn').style.display = 'none';
+                    document.getElementById('claimBtn').style.display = 'block';
+                    document.getElementById('txLog').innerHTML = "✅ 연결 성공: " + userAccount.substring(0,10) + "...";
                 } catch (err) {
-                    alert('지갑 연결 실패!');
+                    alert("지갑 연결 거부됨!");
                 }
             } else {
-                alert('메타마스크 내부 브라우저로 접속해 주세요!');
+                alert("메타마스크 브라우저에서 열어주세요!");
             }
         }
 
-        // 2. [실전] 보상 출금 함수 (진짜 트랜잭션!)
+        // 2. [최종] 진짜 전송 함수
         async function claimReward() {
-            const btn = document.getElementById('claimBtn');
             const log = document.getElementById('txLog');
+            const btn = document.getElementById('claimBtn');
             
-            const provider = new ethers.providers.Web3Provider(window.ethereum);
-            const signer = provider.getSigner();
-
             try {
                 btn.disabled = true;
-                btn.innerText = '승인 대기 중...';
-                log.innerHTML = "<p style='color:yellow'>⏳ 메타마스크 승인창을 확인하세요!</p>";
+                btn.innerText = "⏳ 승인 대기 중...";
                 
-                // [실전 트랜잭션 설정] 0.01 POL을 왕자님 본인 지갑으로 전송 테스트
-                // (실제로 POL이 지갑에 들어있어야 승인이 성공합니다!)
+                // ethers 도구 깨우기
+                const provider = new ethers.providers.Web3Provider(window.ethereum);
+                const signer = provider.getSigner();
+
+                // 0.01 POL 전송 명령
                 const tx = {
-                    to: userAccount, 
-                    value: ethers.utils.parseEther("0.01"), // 보낼 금액
+                    to: userAccount, // 왕자님 지갑으로 다시 보내기 (테스트)
+                    value: ethers.utils.parseEther("0.01")
                 };
 
                 const transaction = await signer.sendTransaction(tx);
-                log.innerHTML = `<p>🚀 전송 시작! <br>해시: ${transaction.hash.substring(0,30)}...</p>`;
+                log.innerHTML = "🚀 전송 시작! 해시: " + transaction.hash.substring(0,25) + "...";
                 
-                await transaction.wait(); // 네트워크 확정 대기
-                
-                log.innerHTML = `<p style='color:#56ff9a'>✅ 현신 완료! 0.01 POL이 입금되었습니다!</p>`;
-                btn.innerText = '출금 성공';
-                alert('진짜 POL이 왕자님의 지갑으로 입금되었습니다!');
+                await transaction.wait();
+                log.innerHTML = "✅ 현신 성공! 0.01 POL 입금 완료!";
+                btn.innerText = "출금 완료! ✨";
+                alert("진짜 POL이 입금되었습니다!");
 
             } catch (err) {
                 console.error(err);
-                log.innerHTML = `<p style='color:red'>❌ 실패: ${err.message.substring(0,60)}...</p>`;
+                log.innerHTML = "❌ 실패: " + (err.reason || "잔액 부족 또는 취소됨");
                 btn.disabled = false;
-                btn.innerText = '다시 시도';
+                btn.innerText = "다시 시도";
             }
         }
     </script>
