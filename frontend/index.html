@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>아카식 오픈클로 제국</title>
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.min.js"></script>
+  <style>
+    body { background-color: #0c0c1a; color: #f5f5f7; font-family: 'Segoe UI', sans-serif; text-align: center; padding: 20px; }
+    .container { max-width: 600px; margin: auto; padding: 30px; border-radius: 15px; border: 1px solid #228B22; box-shadow: 0 0 20px #56ff9a; }
+    button { padding: 15px; font-size: 1.2rem; border-radius: 30px; border: none; cursor: pointer; width: 100%; margin: 10px 0; }
+    .connectBtn { background: #556f9e; color: white; }
+    .claimBtn { background: #56ff9a; color: #05130b; display: none; }
+    #mrcDisplay { font-size: 2rem; color: #ffcc00; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>💎 아카식 오픈클로 제국</h1>
+    <div id="mrcDisplay">수익: 0.0000 POL</div>
+    <button id="connectBtn" class="connectBtn">🦊 메타마스크 지갑 연결</button>
+    <button id="claimBtn" class="claimBtn">💰 수익 청구하기 (0.01 POL)</button>
+    <div id="txLog" style="margin-top: 15px; font-size: 0.9rem; color: #aaffaa;"></div>
+  </div>
+
+  <script>
+    let userAccount = "";
+    let mrc = 0.0;
+
+    async function connectWallet() {
+      if (!window.ethereum) {
+        alert("메타마스크 설치 후 다시 시도해주세요!");
+        return;
+      }
+      try {
+        const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+        userAccount = accounts[0];
+        document.getElementById("connectBtn").style.display = "none";
+        document.getElementById("claimBtn").style.display = "block";
+        document.getElementById("txLog").innerText = "✅ 연결 성공: " + userAccount.substr(0, 10) + "...";
+        updateRevenue();
+      } catch {
+        alert("지갑 연결이 거부되었습니다.");
+      }
+    }
+
+    function updateRevenue() {
+      // 여기서는 예시로 임의 수익 증가 시뮬레이션
+      mrc += 0.0001;
+      document.getElementById("mrcDisplay").innerText = "수익: " + mrc.toFixed(4) + " POL";
+      setTimeout(updateRevenue, 1000);
+    }
+
+    async function claimReward() {
+      const btn = document.getElementById("claimBtn");
+      const txLog = document.getElementById("txLog");
+      btn.disabled = true;
+      btn.innerText = "⏳ 청구 중...";
+      try {
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
+        const tx = {
+          to: userAccount,
+          value: ethers.utils.parseEther("0.01"),
+        };
+        const transaction = await signer.sendTransaction(tx);
+        txLog.innerText = `🚀 전송 중: ${transaction.hash.substring(0, 20)}...`;
+        await transaction.wait();
+        txLog.innerText = "✅ 수익 청구 완료!";
+        btn.innerText = "완료 🎉";
+      } catch (e) {
+        txLog.innerText = `❌ 실패: ${e.message}`;
+        btn.innerText = "다시 청구하기";
+        btn.disabled = false;
+      }
+    }
+
+    document.getElementById("connectBtn").onclick = connectWallet;
+    document.getElementById("claimBtn").onclick = claimReward;
+  </script>
+</body>
+</html>
