@@ -1,44 +1,32 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>M♥R 아카식 오픈클로 제국</title>
+    <title>OpenClo Empire</title>
     <style>
-        body { background: #000; color: #ffd700; text-align: center; font-family: 'serif'; }
-        .dashboard { border: 2px solid #ffd700; padding: 20px; margin: 50px auto; width: 300px; border-radius: 15px; box-shadow: 0 0 20px #ffd700; }
-        h1 { font-size: 1.5rem; }
-        .mrc-value { font-size: 2.5rem; font-weight: bold; margin: 20px 0; color: #fff; text-shadow: 0 0 10px #ffd700; }
-        .status { font-size: 0.8rem; color: #888; }
+        body { background-color: #000; color: #ffd700; text-align: center; padding: 50px; font-family: sans-serif; }
+        .box { border: 3px solid #ffd700; padding: 30px; border-radius: 20px; display: inline-block; box-shadow: 0 0 20px #ffd700; }
+        #mrcDisplay { font-size: 3rem; color: #fff; margin: 20px 0; }
     </style>
 </head>
 <body>
-    <div class="dashboard">
-        <h1>💎 임페리얼 대시보드 💎</h1>
-        <p>현재 누적 수익</p>
-        <div id="mrcDisplay" class="mrc-value">로드 중...</div>
-        <p id="lastUpdate" class="status">로봇이 장부를 가져오는 중입니다...</p>
+    <div class="box">
+        <h1>👑 M♥R IMPERIAL 👑</h1>
+        <div id="mrcDisplay">0.0000 MRC</div>
+        <p id="lastUpdate">로봇이 수익을 가져오고 있습니다...</p>
     </div>
 
     <script>
-        async function updateImperialData() {
+        async function updateData() {
             try {
-                // 장부 파일(json)을 실시간으로 읽어옵니다!
-                const response = await fetch('revenue_data.json?t=' + new Date().getTime());
-                if (!response.ok) throw new Error('Wait...');
-                const data = await response.json();
-                
-                // 화면의 숫자를 장부 숫자로 교체!!
+                const res = await fetch('revenue_data.json?v=' + Date.now());
+                const data = await res.json();
                 document.getElementById('mrcDisplay').innerText = data.total_mrc.toFixed(4) + " MRC";
                 document.getElementById('lastUpdate').innerText = "최근 채굴: " + data.last_update;
-                console.log("Imperial Data Sync!", data.total_mrc);
-            } catch (e) {
-                console.log("로봇이 아직 첫 장부를 배달 중입니다...");
-            }
+            } catch (e) { console.log("Waiting for robot..."); }
         }
-
-        // 3초마다 자동으로 장부를 확인하여 숫자를 올립니다!
-        setInterval(updateImperialData, 3000);
-        updateImperialData();
+        setInterval(updateData, 3000);
+        updateData();
     </script>
 </body>
 </html>
