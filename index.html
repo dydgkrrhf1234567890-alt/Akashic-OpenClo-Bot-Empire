@@ -1,20 +1,16 @@
-// index.html의 기존 script 부분을 이 코드로 교체하세요!
 async function updateImperialData() {
     try {
-        // 로봇이 작성한 황금 장부(json)를 읽어옵니다!
         const response = await fetch('revenue_data.json?t=' + new Date().getTime());
-        if (!response.ok) throw new Error('장부 대기 중...');
+        if (!response.ok) throw new Error('Wait...');
         const data = await response.json();
         
-        // 화면의 숫자를 실시간 장부 숫자로 교체!!
         document.getElementById('mrcDisplay').innerText = data.total_mrc.toFixed(4);
         document.getElementById('lastUpdate').innerText = "최근 채굴: " + data.last_update;
-        console.log("제국 장부 동기화 완료!", data.total_mrc);
+        console.log("Imperial Data Sync!", data.total_mrc);
     } catch (e) {
-        console.log("로봇이 아직 첫 장부를 배달 중입니다...");
+        console.log("Loading...");
     }
 }
 
-// 3초마다 자동으로 장부를 확인해서 숫자를 올립니다!
 setInterval(updateImperialData, 3000);
 updateImperialData();
