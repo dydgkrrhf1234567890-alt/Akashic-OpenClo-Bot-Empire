@@ -1,0 +1,9 @@
+# ADVC Imperial Security Shield
+env
+.env
+*.key
+node_modules/
+__pycache__/
+.replit
+.history
+revenue_data.json
