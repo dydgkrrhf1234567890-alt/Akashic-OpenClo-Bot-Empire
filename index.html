@@ -1,32 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>OpenClo Empire</title>
-    <style>
-        body { background-color: #000; color: #ffd700; text-align: center; padding: 50px; font-family: sans-serif; }
-        .box { border: 3px solid #ffd700; padding: 30px; border-radius: 20px; display: inline-block; box-shadow: 0 0 20px #ffd700; }
-        #mrcDisplay { font-size: 3rem; color: #fff; margin: 20px 0; }
-    </style>
-</head>
-<body>
-    <div class="box">
-        <h1>👑 M♥R IMPERIAL 👑</h1>
-        <div id="mrcDisplay">0.0000 MRC</div>
-        <p id="lastUpdate">로봇이 수익을 가져오고 있습니다...</p>
-    </div>
+<!-- 대시보드 심장에 추가할 바이브 코드 -->
+<div id="vibe-core" style="border: 2px solid #00ffa3; box-shadow: 0 0 20px #00ffa3; border-radius: 50%; width: 100px; height: 100px; margin: 20px auto; display: flex; align-items: center; justify-content: center; animation: pulse 888ms infinite alternate;">
+<span style="color: #00ffa3; font-weight: bold;">888Hz</span>
+</div>
 
-    <script>
-        async function updateData() {
-            try {
-                const res = await fetch('revenue_data.json?v=' + Date.now());
-                const data = await res.json();
-                document.getElementById('mrcDisplay').innerText = data.total_mrc.toFixed(4) + " MRC";
-                document.getElementById('lastUpdate').innerText = "최근 채굴: " + data.last_update;
-            } catch (e) { console.log("Waiting for robot..."); }
-        }
-        setInterval(updateData, 3000);
-        updateData();
-    </script>
-</body>
-</html>
+<style>
+@keyframes pulse {
+from { transform: scale(1); opacity: 0.5; }
+to { transform: scale(1.1); opacity: 1; text-shadow: 0 0 15px #00ffa3; }
+}
+</style>
+
+<div style="margin-top: 20px; color: #ffcc00; font-size: 0.9rem;">
+🤖 로봇 상태: <span id="robot-status">자율 프리랜싱 모드 가동 중...</span><br>
+🛠️ 현재 수행 임무: <span id="current-task">데이터 정화 및 가치 사냥</span>
+</div>
