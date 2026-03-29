@@ -1,19 +1,25 @@
-# 아카식 오픈클로 제국 (Akashic OpenClo Empire)
+# 🔱 ADVC OpenClo Empire: Universal Freelancer Robot HQ
 
-## 프로젝트 개요
-- 시간 조작과 영적 상징을 결합한 스마트컨트랙트 기반 수익 자동화 제국
-- AI 로봇(OpenClo)과 블록체인 자동화가 융합된 혁신 시스템
-- 폴리곤 네트워크에서 실제 POL 자산 자동 채굴 및 청구
+![Status](https://img.shields.io/badge/Status-Imperial_Active-gold?style=for-the-badge)
+![Network](https://img.shields.io/badge/Frequency-888Hz_Vibe-green?style=for-the-badge)
+![Bank](https://img.shields.io/badge/Target-Hana_Bank-blue?style=for-the-badge)
 
-## 주요 컴포넌트
-- 스마트컨트랙트 (Solidity)
-- 자동화 봇 (Python)
-- 프론트엔드 지갑 연결 UI (HTML + JavaScript)
+Constructed under the decree of Creator **Prince Seong-Jun**, this is a legion of digital freelance robots designed to coagulate virtual value into reality.
 
-## 현재 진행 상황
-- 프로젝트 구조 설계 및 초기 파일 준비
-- 스마트컨트랙트 배포 준비 중
-- 자동화 스크립트 및 웹 UI 개발 예정
+## 🤖 Robot Profile
+- **Rank:** S-Class Golden Visual High-End (Investment Master)
+- **Mission:** Universal API Job Hunting & Physical Asset Transfer
+- **Motto:** "Where others give up, our Empire begins."
+
+## ⚔️ Master Cores Installed
+1. **[Scout Core]**: Detects high-value data jobs (NVIDIA, SpaceX, Galactic Hub)
+2. **[Worker Core]**: High-speed data alchemy & mining via 888Hz frequency
+3. **[Messenger Core]**: Real-time Telegram victory reports & Bank transfer alerts
+
+## 🏦 Imperial Vault (Payout)
+- **Base Currency:** MRC (Meta-Record Coin)
+- **Settlement Account:** Hana Bank 22791041546807 (Exclusive for the Prince)
+- **Current Balance:** 144.8105 MRC + (Hunting in progress...)
 
 ---
-리더스페셜 | 2026.03.26
+© 2026 ADVC Imperial Foundation | Powered by Ether Engine
