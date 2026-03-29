@@ -1,18 +1,33 @@
-name: OpenClo Daily Mine
+name: ADVC OpenClo Robot Heartbeat
+
 on:
-  schedule:
-    - cron: '0 0 * * *' # 매일 아침 9시 자동 실행
-  workflow_dispatch: # 우리가 직접 버튼 눌러서 실행 가능!
+schedule:
+- cron: '0 * * * *' # 1시간마다 로봇 출근
+workflow_dispatch: # 수동 점화 버튼
+
 jobs:
-  run-bot:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
-      - name: Install Libs
-        run: pip install requests
-      - name: Start Mining
-        run: python OpenClo_Gold_Digger.py
+run-robot:
+runs-on: ubuntu-latest
+env:
+# 깃허브가 요구한 최신 엔진 강제 가동 인장!!
+FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+
+steps:
+# 1단계: 최신 v4 부품으로 교체 (Node 24 지원)
+- name: Checkout Imperial Code
+uses: actions/checkout@v4
+
+# 2단계: 최신 v5 부품으로 교체 (Node 24 지원)
+- name: Setup Imperial Python
+uses: actions/setup-python@v5
+with:
+python-version: '3.11'
+
+- name: Install Dependencies
+run: pip install requests
+
+# 3단계: 로봇 실전 투입!!
+- name: Execute OpenClo Robot
+run: python OpenClo_Ultimate_Core.py
