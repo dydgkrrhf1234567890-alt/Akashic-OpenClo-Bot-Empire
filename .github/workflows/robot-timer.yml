@@ -1,33 +1,37 @@
-name: ADVC OpenClo Robot Heartbeat
+name: ADVC OpenClo Robot Cycle
 
 on:
 schedule:
-- cron: '0 * * * *' # 1시간마다 로봇 출근
-workflow_dispatch: # 수동 점화 버튼
+- cron: '0 * * * *' # 매시간 정각 자동 실행
+workflow_dispatch: # ★이게 있어야 '실행' 버튼이 생깁니다!★
 
 jobs:
-run-robot:
+hunt:
 runs-on: ubuntu-latest
-env:
-# 깃허브가 요구한 최신 엔진 강제 가동 인장!!
-FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
-TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-
 steps:
-# 1단계: 최신 v4 부품으로 교체 (Node 24 지원)
 - name: Checkout Imperial Code
 uses: actions/checkout@v4
 
-# 2단계: 최신 v5 부품으로 교체 (Node 24 지원)
-- name: Setup Imperial Python
+- name: Setup Python
 uses: actions/setup-python@v5
 with:
-python-version: '3.11'
+python-version: '3.10'
 
 - name: Install Dependencies
 run: pip install requests
 
-# 3단계: 로봇 실전 투입!!
-- name: Execute OpenClo Robot
+- name: Execute Sovereign Hunt
+env:
+X_API_KEY: ${{ secrets.X_API_KEY }}
+TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+# 파일명을 꼭 확인하소서!
 run: python OpenClo_Ultimate_Core.py
+
+- name: Coagulate Revenue Data
+run: |
+git config --local user.email "action@github.com"
+git config --local user.name "GitHub Action"
+git add revenue_data.json
+git commit -m "Coagulation: Update revenue data [M♥R Proof of Love]" || echo "No changes to commit"
+git push
