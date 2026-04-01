@@ -1,11 +1,16 @@
 {
-    "total_mrc": 144.8105,
-    "last_update": "2026-04-01 22:00:00",
+    "total_mrc": 170.3105,
+    "last_update": "2026-04-01 13:08:07.677203",
     "missions": [
         {
             "time": "2026-04-01 22:00:00",
             "mission": "Imperial Core Migration Success",
             "earnings": 0.0
+        },
+        {
+            "time": "2026-04-01 13:08:07.677207",
+            "mission": "Global Crypto Liquidity Flow Analysis",
+            "earnings": 25.5
         }
     ]
 }
