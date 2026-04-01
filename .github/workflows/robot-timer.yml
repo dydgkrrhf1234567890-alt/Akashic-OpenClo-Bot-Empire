@@ -1,9 +1,11 @@
 name: ADVC OpenClo Robot Cycle
-
 on:
   workflow_dispatch:
   schedule:
     - cron: '0 * * * *'
+
+permissions:
+  contents: write
 
 jobs:
   hunt:
@@ -11,26 +13,22 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
-
       - name: Install Requests
         run: pip install requests
-
       - name: Run Robot v3
         env:
           X_API_KEY: ${{ secrets.X_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python OpenClo_Ultimate_Core.py
-
       - name: Commit Results
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add revenue_data.json
-          git commit -m "Coagulation: Update revenue [M♥R]" || echo "No changes"
+          git commit -m "Coagulation: Update revenue [M♥R Proof of Love]" || echo "No changes"
           git push
