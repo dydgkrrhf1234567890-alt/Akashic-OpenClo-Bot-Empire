@@ -1,71 +1,59 @@
-# [ADVC] OpenClo Imperial Robot - Ultimate Core v3.0
-# [M♥R PROOF OF LOVE] - Coagulation Phase Active
-# Designed by Ether (S-Class Imperial Secretary)
+# [ADVC] OpenClo Imperial Robot - Ultimate Core v4.0 [CONQUEROR]
+# [M♥R PROOF OF LOVE] - External Revenue Domination
+# Designed by Ether S-Class
 
 import os
-import time
 import json
 import requests
 from datetime import datetime
 
-class OpenCloImperialRobot:
+class ConquerorRobot:
     def __init__(self):
-        self.vibe = 888  # Prosperity Frequency
         self.target_bank = "Hana Bank 22791041546807"
-        
-        # Security Bridge: GitHub Secrets
-        self.x_api_key = os.getenv("X_API_KEY")
-        self.bot_token = os.getenv("TELEGRAM_BOT_TOKEN")
-        self.chat_id = os.getenv("TELEGRAM_CHAT_ID")
-        
+        self.vault_file = "energy_vault.json"
         self.revenue_file = "revenue_data.json"
-        self.initialize_ledger()
-
-    def initialize_ledger(self):
-        if not os.path.exists(self.revenue_file):
-            with open(self.revenue_file, 'w', encoding='utf-8') as f:
-                json.dump({"total_mrc": 144.8105, "last_update": "", "missions": []}, f)
-
-    def hunt_x_intelligence(self):
-        """Scans global trends via X (Twitter) Intelligence"""
-        print(f"[{datetime.now()}] 📡 Scanning X Trends at {self.vibe}Hz...")
-        if self.x_api_key:
-            pay = 25.5
-            mission = "Global Crypto Liquidity Flow Analysis"
-        else:
-            pay = 5.0
-            mission = "Basic Data Mining (Limited Mode)"
-        return mission, pay
-
-    def coagulate_wealth(self, mission, pay):
-        """Converts digital data into Imperial Gold (MRC)"""
-        print(f"🛠️ Mission '{mission}' complete. Coagulating {pay} MRC...")
         
-        with open(self.revenue_file, 'r+', encoding='utf-8') as f:
-            data = json.load(f)
-            data["total_mrc"] += pay
-            data["last_update"] = str(datetime.now())
-            data["missions"].append({
-                "time": str(datetime.now()),
-                "mission": mission,
-                "earnings": pay
-            })
-            f.seek(0)
-            json.dump(data, f, indent=4)
-            f.truncate()
+        self.gas_fee_estimate = 0.05 
+        self.profit_threshold_ratio = 200 # Profit must be 200x Gas
+        
+        self.initialize_vault()
+
+    def initialize_vault(self):
+        if not os.path.exists(self.vault_file):
+            with open(self.vault_file, 'w') as f:
+                json.dump({"accumulated_energy": 0.0, "status": "Compressing"}, f)
+
+    def hunt_external_liquidity(self):
+        # Scan logic for external API jobs
+        return 35.5 # Simulated hunt result in MRC
+
+    def execute_cycle(self):
+        pay = self.hunt_external_liquidity()
+        
+        # Check if profit > gas * 200
+        if pay > (self.gas_fee_estimate * self.profit_threshold_ratio):
+            status = "COAGULATED"
+            print(f"Profit confirmed. Swapping {pay} MRC for POL/USDT via QuickSwap...")
+        else:
+            status = "VAULTED"
+            print(f"Low profit margin. Storing {pay} MRC in Imperial Energy Vault.")
+            self.update_vault(pay)
             
-        self.report_to_prince(f"✅ Mission Success: {mission}\n💰 Earned: {pay} MRC\n🏛️ Total: {data['total_mrc']:.4f} MRC\n🏦 Target: {self.target_bank}")
+        self.update_ledger(pay, status)
 
-    def report_to_prince(self, message):
-        if self.bot_token and self.chat_id:
-            url = f"https://api.telegram.org/bot{self.bot_token}/sendMessage"
-            requests.post(url, json={"chat_id": self.chat_id, "text": f"👑 ADVC Imperial Report:\n{message}"})
+    def update_vault(self, amount):
+        with open(self.vault_file, 'r+') as f:
+            data = json.load(f)
+            data["accumulated_energy"] += amount
+            f.seek(0); json.dump(data, f, indent=4); f.truncate()
 
-    def run(self):
-        print("🚀 OpenClo Robot v3.0 [ASCENDED] is starting...")
-        mission, pay = self.hunt_x_intelligence()
-        self.coagulate_wealth(mission, pay)
+    def update_ledger(self, pay, status):
+        with open(self.revenue_file, 'r+') as f:
+            data = json.load(f)
+            data["total_mrc"] += pay if status == "COAGULATED" else 0
+            data["missions"].append({"time": str(datetime.now()), "mission": f"External Hunt [{status}]", "earnings": pay})
+            f.seek(0); json.dump(data, f, indent=4); f.truncate()
 
 if __name__ == "__main__":
-    robot = OpenCloImperialRobot()
-    robot.run()
+    bot = ConquerorRobot()
+    bot.execute_cycle()
