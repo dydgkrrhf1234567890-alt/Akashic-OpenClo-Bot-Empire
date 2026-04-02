@@ -1,5 +1,5 @@
 {
-    "total_mrc": 578.3105,
+    "total_mrc": 613.8105,
     "last_update": "2026-04-02 11:39:48.589451",
     "missions": [
         {
@@ -91,6 +91,11 @@
             "time": "2026-04-02 11:39:48.589455",
             "mission": "Global Crypto Liquidity Flow Analysis",
             "earnings": 25.5
+        },
+        {
+            "time": "2026-04-02 12:53:20.477829",
+            "mission": "External Hunt [COAGULATED]",
+            "earnings": 35.5
         }
     ]
 }
