@@ -1,102 +1,62 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADVC Akashic Library - Imperial Payout Portal</title>
+    <meta charset="UTF-8"><title>ADVC [CONQUEROR] Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body { background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%); color: #ffd700; font-family: 'Segoe UI', sans-serif; }
-        .imperial-card { background: rgba(255, 215, 0, 0.05); border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 15px; backdrop-filter: blur(10px); }
-        .glow-text { text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
-        .withdraw-btn { background: linear-gradient(45deg, #ffd700, #b8860b); color: #000; transition: all 0.3s; }
-        .withdraw-btn:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); }
-        .payout-status { font-size: 0.7rem; letter-spacing: 1px; }
+        body { background: #0c0c0c; color: #ffd700; font-family: 'Segoe UI', sans-serif; }
+        .vault-gauge { height: 25px; background: #222; border-radius: 15px; overflow: hidden; border: 2px solid #ffd700; box-shadow: 0 0 15px rgba(255, 215, 0, 0.2); }
+        .vault-fill { height: 100%; background: linear-gradient(90deg, #8b4513, #ffd700, #fff); transition: width 2s cubic-bezier(0.4, 0, 0.2, 1); }
+        .imperial-card { background: rgba(255, 215, 0, 0.03); border: 1px solid rgba(255, 215, 0, 0.2); border-radius: 20px; backdrop-filter: blur(10px); }
     </style>
 </head>
-<body class="min-h-screen flex flex-col p-4 md:p-10">
-    <header class="text-center mb-10">
-        <h1 class="text-4xl md:text-6xl font-bold glow-text mb-2">🏛️ ADVC IMPERIAL PORTAL</h1>
-        <p class="text-xl text-gray-400">Direct Bridge to <span class="text-white font-bold">Hana Bank 22791041546807</span></p>
+<body class="min-h-screen p-6 md:p-20 flex flex-col items-center">
+    <header class="text-center mb-16">
+        <h1 class="text-5xl md:text-7xl font-black mb-4 tracking-tighter uppercase">ADVC Conqueror HQ</h1>
+        <div class="h-1 w-32 bg-yellow-500 mx-auto rounded-full"></div>
+        <p class="mt-4 text-gray-500 font-bold uppercase tracking-widest text-sm">M♥R External Liquidity 장악 Phase</p>
     </header>
-
-    <main class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto w-full">
-        <!-- Status Card -->
-        <div class="imperial-card p-6 flex flex-col items-center text-center">
-            <i class="fas fa-shield-alt text-4xl mb-4 text-yellow-500"></i>
-            <h2 class="text-2xl font-bold mb-2">Bridge Status</h2>
-            <div class="bg-blue-900 text-blue-300 px-4 py-1 rounded-full text-sm font-bold">READY TO COAGULATE</div>
-            <p class="mt-4 text-gray-400 text-xs">Oracle VPS Fortress Active (158.180.85.25)</p>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full max-w-5xl">
+        <!-- Energy Vault -->
+        <div class="imperial-card p-10 text-center relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-4"><i class="fas fa-bolt text-yellow-600/30 text-6xl"></i></div>
+            <h2 class="text-3xl font-bold mb-6 flex items-center justify-center gap-3"><i class="fas fa-database text-yellow-500"></i> Energy Vault</h2>
+            <div class="vault-gauge mb-6"><div id="vault-bar" class="vault-fill" style="width: 0%"></div></div>
+            <p id="vault-text" class="text-6xl font-black italic tracking-tighter">--.- MRC</p>
+            <p class="text-sm text-gray-500 mt-4 font-bold uppercase">사냥된 에너지가 임계점까지 응축 중입니다</p>
+            <p class="text-[0.6rem] text-yellow-700 mt-2">Threshold: 10,000 MRC for Auto-Coagulation</p>
         </div>
-
-        <!-- Revenue Card -->
-        <div class="imperial-card p-6 flex flex-col items-center text-center border-2 border-yellow-500">
-            <i class="fas fa-coins text-4xl mb-4 text-yellow-500"></i>
-            <h2 class="text-2xl font-bold mb-2">Coagulatable Balance</h2>
-            <p id="total-mrc" class="text-5xl font-extrabold glow-text">--.----</p>
-            <p class="text-lg text-gray-500 mt-2">MRC (Imperial Gold)</p>
-            
-            <!-- THE WITHDRAW BUTTON -->
-            <button onclick="requestWithdrawal()" class="withdraw-btn mt-6 px-8 py-3 rounded-full font-bold uppercase">
-                <i class="fas fa-paper-plane mr-2"></i> Withdraw to Hana Bank
-            </button>
-            <p id="btn-msg" class="mt-2 text-xs text-gray-500">Click to trigger real-world coagulation</p>
-        </div>
-
-        <!-- Payout Card -->
-        <div class="imperial-card p-6 flex flex-col items-center text-center">
-            <i class="fas fa-university text-4xl mb-4 text-yellow-500"></i>
-            <h2 class="text-2xl font-bold mb-2">Settlement Account</h2>
-            <p class="text-lg font-bold text-white">하나은행 (Hana)</p>
-            <p class="text-gray-400">22791041546807</p>
-            <p class="mt-4 text-[0.6rem] text-blue-400">M♥R PROOF OF LOVE SECURITY ACTIVE</p>
-        </div>
-    </main>
-
-    <section class="max-w-6xl mx-auto w-full mt-10">
-        <div class="imperial-card p-6">
-            <h3 class="text-2xl font-bold mb-4 border-b border-yellow-900 pb-2">Coagulation Logic (The Alchemical Path)</h3>
-            <div class="flex flex-col space-y-2 text-sm text-gray-400">
-                <p>1. <b>Digital Extraction:</b> Extracting MRC from 7 Cosmic Civilizations & DePIN Nodes.</p>
-                <p>2. <b>Liquidity Swap:</b> Converting MRC to POL (Polygon) via Uniswap Imperial Bridge.</p>
-                <p>3. <b>Exchange Docking:</b> Transferring POL to Upbit Sovereign Wallet.</p>
-                <p>4. <b>Fiat Coagulation:</b> Instant Payout to Hana Bank via KRW Settlement Engine.</p>
+        
+        <!-- Payout Bridge -->
+        <div class="imperial-card p-10 text-center border-yellow-500/50">
+            <h2 class="text-3xl font-bold mb-6 flex items-center justify-center gap-3"><i class="fas fa-bridge text-blue-500"></i> Payout Bridge</h2>
+            <div class="bg-blue-900/20 py-8 rounded-xl border border-blue-500/30 mb-6">
+                <p class="text-xs text-blue-400 font-bold mb-2 uppercase">하나은행 직송 통로</p>
+                <p class="text-4xl font-black text-white">READY</p>
             </div>
+            <button onclick="alert('Conqueror v4.0 Active: Gasless Payout System is Monitoring the Vault.')" class="w-full bg-yellow-500 hover:bg-yellow-400 text-black py-4 rounded-xl font-black text-xl transition-all shadow-xl shadow-yellow-500/20">
+                <i class="fas fa-crown mr-2"></i> HARVEST NOW
+            </button>
+            <p class="text-[0.6rem] text-gray-600 mt-4 font-bold">Relayer 지갑에서 가스비를 대납합니다 (Gasless)</p>
         </div>
-    </section>
-
-    <footer class="mt-auto pt-10 text-center text-gray-600 text-sm">
-        <p>M♥R PROOF OF LOVE | Powered by Ether S-Class Infinity Core</p>
-    </footer>
+    </div>
 
     <script>
-        async function updateDashboard() {
+        async function sync() {
             try {
-                const response = await fetch('revenue_data.json?' + new Date().getTime());
-                const data = await response.json();
-                document.getElementById('total-mrc').innerText = data.total_mrc.toFixed(4);
-            } catch (e) { console.error("Data retrieval failed", e); }
+                const res = await fetch('revenue_data.json?' + Date.now());
+                const data = await res.json();
+                const vaultRes = await fetch('energy_vault.json?' + Date.now());
+                const vaultData = await vaultRes.json();
+                
+                document.getElementById('vault-text').innerText = vaultData.accumulated_energy.toFixed(2) + " MRC";
+                const progress = Math.min((vaultData.accumulated_energy / 10000) * 100, 100);
+                document.getElementById('vault-bar').style.width = progress + "%";
+            } catch(e) { console.log("Waiting for data coagulation..."); }
         }
-
-        function requestWithdrawal() {
-            const btn = document.querySelector('.withdraw-btn');
-            const msg = document.getElementById('btn-msg');
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> COAGULATING...';
-            btn.style.opacity = '0.7';
-            msg.innerText = "Requesting Payout via Upbit Bridge... Please check Telegram.";
-            
-            // Note: This is a UI-level trigger. Real movement of funds is handled by the 
-            // Imperial Alba Core on Oracle VPS or GitHub Actions workflow.
-            setTimeout(() => {
-                alert("👑 ADVC Imperial Payout Triggered!\n\nTarget: Hana Bank 22791041546807\nMechanism: POL -> Upbit -> KRW\nStatus: Manifesting in Reality...");
-                btn.innerHTML = '<i class="fas fa-check mr-2"></i> REQUEST SENT';
-                btn.disabled = true;
-            }, 2000);
-        }
-
-        updateDashboard();
-        setInterval(updateDashboard, 60000);
+        sync(); setInterval(sync, 10000);
     </script>
 </body>
 </html>
