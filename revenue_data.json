@@ -1,6 +1,6 @@
 {
-    "total_mrc": 476.3105,
-    "last_update": "2026-04-02 06:06:51.611996",
+    "total_mrc": 501.8105,
+    "last_update": "2026-04-02 08:00:27.344023",
     "missions": [
         {
             "time": "2026-04-01 22:00:00",
@@ -69,6 +69,11 @@
         },
         {
             "time": "2026-04-02 06:06:51.612000",
+            "mission": "Global Crypto Liquidity Flow Analysis",
+            "earnings": 25.5
+        },
+        {
+            "time": "2026-04-02 08:00:27.344028",
             "mission": "Global Crypto Liquidity Flow Analysis",
             "earnings": 25.5
         }
