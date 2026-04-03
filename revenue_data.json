@@ -1,5 +1,5 @@
 {
-    "total_mrc": 348.3105,
+    "total_mrc": 383.8105,
     "last_update": "2026-04-03 21:00:00",
     "missions": [
         {
@@ -16,6 +16,11 @@
             "time": "2026-04-03 21:00:00",
             "mission": "Forced Coagulation: Ledger Sync",
             "earnings": 0.0
+        },
+        {
+            "time": "2026-04-03 12:41:11.659008",
+            "mission": "External Hunt [COAGULATED]",
+            "earnings": 35.5
         }
     ]
 }
