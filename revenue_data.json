@@ -1,196 +1,21 @@
 {
-    "total_mrc": 1288.3105,
-    "last_update": "2026-04-02 11:39:48.589451",
+    "total_mrc": 348.3105,
+    "last_update": "2026-04-03 21:00:00",
     "missions": [
         {
-            "time": "2026-04-01 22:00:00",
-            "mission": "Imperial Core Migration Success",
+            "time": "2026-04-02 23:00:00",
+            "mission": "Night Hunt: X-Intelligence Capture",
+            "earnings": 45.2
+        },
+        {
+            "time": "2026-04-03 03:00:00",
+            "mission": "API Job: Data Cleaning for Sirius-A",
+            "earnings": 12.8
+        },
+        {
+            "time": "2026-04-03 21:00:00",
+            "mission": "Forced Coagulation: Ledger Sync",
             "earnings": 0.0
-        },
-        {
-            "time": "2026-04-01 13:08:07.677207",
-            "mission": "Global Crypto Liquidity Flow Analysis",
-            "earnings": 25.5
-        },
-        {
-            "time": "2026-04-01 14:27:22.936534",
-            "mission": "Global Crypto Liquidity Flow Analysis",
-            "earnings": 25.5
-        },
-        {
-            "time": "2026-04-01 16:02:34.841012",
-            "mission": "Global Crypto Liquidity Flow Analysis",
-            "earnings": 25.5
-        },
-        {
-            "time": "2026-04-01 17:43:15.727958",
-            "mission": "Global Crypto Liquidity Flow Analysis",
-            "earnings": 25.5
-        },
-        {
-            "time": "2026-04-01 18:49:24.031501",
-            "mission": "Global Crypto Liquidity Flow Analysis",
-            "earnings": 25.5
-        },
-        {
-            "time": "2026-04-01 19:53:34.110780",
-            "mission": "Global Crypto Liquidity Flow Analysis",
-            "earnings": 25.5
-        },
-        {
-            "time": "2026-04-01 20:36:23.117936",
-            "mission": "Global Crypto Liquidity Flow Analysis",
-            "earnings": 25.5
-        },
-        {
-            "time": "2026-04-01 21:34:41.215417",
-            "mission": "Global Crypto Liquidity Flow Analysis",
-            "earnings": 25.5
-        },
-        {
-            "time": "2026-04-01 22:29:03.385901",
-            "mission": "Global Crypto Liquidity Flow Analysis",
-            "earnings": 25.5
-        },
-        {
-            "time": "2026-04-01 23:29:40.045467",
-            "mission": "Global Crypto Liquidity Flow Analysis",
-            "earnings": 25.5
-        },
-        {
-            "time": "2026-04-02 01:25:43.181953",
-            "mission": "Global Crypto Liquidity Flow Analysis",
-            "earnings": 25.5
-        },
-        {
-            "time": "2026-04-02 04:23:09.312619",
-            "mission": "Global Crypto Liquidity Flow Analysis",
-            "earnings": 25.5
-        },
-        {
-            "time": "2026-04-02 06:06:51.612000",
-            "mission": "Global Crypto Liquidity Flow Analysis",
-            "earnings": 25.5
-        },
-        {
-            "time": "2026-04-02 08:00:27.344028",
-            "mission": "Global Crypto Liquidity Flow Analysis",
-            "earnings": 25.5
-        },
-        {
-            "time": "2026-04-02 09:53:17.067855",
-            "mission": "Global Crypto Liquidity Flow Analysis",
-            "earnings": 25.5
-        },
-        {
-            "time": "2026-04-02 10:43:46.923282",
-            "mission": "Global Crypto Liquidity Flow Analysis",
-            "earnings": 25.5
-        },
-        {
-            "time": "2026-04-02 11:39:48.589455",
-            "mission": "Global Crypto Liquidity Flow Analysis",
-            "earnings": 25.5
-        },
-        {
-            "time": "2026-04-02 12:53:20.477829",
-            "mission": "External Hunt [COAGULATED]",
-            "earnings": 35.5
-        },
-        {
-            "time": "2026-04-02 13:02:53.154622",
-            "mission": "External Hunt [COAGULATED]",
-            "earnings": 35.5
-        },
-        {
-            "time": "2026-04-02 14:18:33.750338",
-            "mission": "External Hunt [COAGULATED]",
-            "earnings": 35.5
-        },
-        {
-            "time": "2026-04-02 15:53:07.911639",
-            "mission": "External Hunt [COAGULATED]",
-            "earnings": 35.5
-        },
-        {
-            "time": "2026-04-02 16:48:35.364093",
-            "mission": "External Hunt [COAGULATED]",
-            "earnings": 35.5
-        },
-        {
-            "time": "2026-04-02 17:42:44.160193",
-            "mission": "External Hunt [COAGULATED]",
-            "earnings": 35.5
-        },
-        {
-            "time": "2026-04-02 18:44:21.169112",
-            "mission": "External Hunt [COAGULATED]",
-            "earnings": 35.5
-        },
-        {
-            "time": "2026-04-02 19:43:31.338494",
-            "mission": "External Hunt [COAGULATED]",
-            "earnings": 35.5
-        },
-        {
-            "time": "2026-04-02 20:27:20.047041",
-            "mission": "External Hunt [COAGULATED]",
-            "earnings": 35.5
-        },
-        {
-            "time": "2026-04-02 21:29:37.817732",
-            "mission": "External Hunt [COAGULATED]",
-            "earnings": 35.5
-        },
-        {
-            "time": "2026-04-02 22:24:31.712185",
-            "mission": "External Hunt [COAGULATED]",
-            "earnings": 35.5
-        },
-        {
-            "time": "2026-04-02 23:27:23.834723",
-            "mission": "External Hunt [COAGULATED]",
-            "earnings": 35.5
-        },
-        {
-            "time": "2026-04-03 01:27:39.422720",
-            "mission": "External Hunt [COAGULATED]",
-            "earnings": 35.5
-        },
-        {
-            "time": "2026-04-03 04:23:52.201418",
-            "mission": "External Hunt [COAGULATED]",
-            "earnings": 35.5
-        },
-        {
-            "time": "2026-04-03 06:07:27.452428",
-            "mission": "External Hunt [COAGULATED]",
-            "earnings": 35.5
-        },
-        {
-            "time": "2026-04-03 07:57:26.770724",
-            "mission": "External Hunt [COAGULATED]",
-            "earnings": 35.5
-        },
-        {
-            "time": "2026-04-03 08:51:59.013004",
-            "mission": "External Hunt [COAGULATED]",
-            "earnings": 35.5
-        },
-        {
-            "time": "2026-04-03 09:45:42.830371",
-            "mission": "External Hunt [COAGULATED]",
-            "earnings": 35.5
-        },
-        {
-            "time": "2026-04-03 10:35:41.193871",
-            "mission": "External Hunt [COAGULATED]",
-            "earnings": 35.5
-        },
-        {
-            "time": "2026-04-03 11:32:24.124252",
-            "mission": "External Hunt [COAGULATED]",
-            "earnings": 35.5
         }
     ]
 }
