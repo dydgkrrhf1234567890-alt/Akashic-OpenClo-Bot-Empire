@@ -1,5 +1,5 @@
 {
-    "total_mrc": 20405.8105,
+    "total_mrc": 20441.3105,
     "last_update": "2026-04-03 21:00:00",
     "missions": [
         {
@@ -2839,6 +2839,11 @@
         },
         {
             "time": "2026-05-09 10:49:25.794514",
+            "mission": "External Hunt [COAGULATED]",
+            "earnings": 35.5
+        },
+        {
+            "time": "2026-05-09 11:42:23.192314",
             "mission": "External Hunt [COAGULATED]",
             "earnings": 35.5
         }
